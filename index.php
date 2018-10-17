@@ -1,4 +1,20 @@
-<?php require 'inc/head.php'; ?>
+<?php require 'inc/head.php';
+
+if (empty($_SESSION)) {
+    header('location: /login.php');
+}
+
+if ($_GET) {
+    if (!isset($_SESSION['panier']) || !array_key_exists($_GET['add_to_cart'], $_SESSION['panier'])) {
+        $_SESSION['panier'][$_GET['add_to_cart']] = 1;
+    } else {
+        $_SESSION['panier'][$_GET['add_to_cart']] += 1;
+    }
+}
+
+var_dump($_SESSION);
+var_dump($_GET);
+?>
 <section class="cookies container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">

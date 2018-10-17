@@ -1,3 +1,11 @@
+<?php
+// Start the session
+session_start();
+$cookie_name = "admin";
+$cookie_value = "Mathel";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +17,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/styles.css" />
+
 </head>
 <body>
   <header>
@@ -35,7 +44,8 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Chocolates chips</a></li>
           <li><a href="#">Nuts</a></li>
-          <li><a href="#">Gluten full</a></li>
+            <li><a href="#">Gluten full</a></li>
+            <li><a href="/deconnection.php">Deconnection</a></li>
           <li>
             <a href="/cart.php" class="btn btn-warning navbar-btn">
               <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
@@ -47,6 +57,6 @@
     </div><!-- /.container-fluid -->
   </nav>
   <div class="container-fluid text-right">
-    <strong>Hello Wilder !</strong>
+    <h1><strong>"Hello <?php if (!empty($_SESSION['loginname'])) {echo $_SESSION['loginname']; } else {echo 'Wilder';}; ?> !"</strong></h1>
   </div>
 </header>
